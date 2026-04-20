@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmony Music Private Lesson</title>
+    <style>
+        :root {
+            --primary-gold: #d4af37;
+            --secondary-red: #b22222;
+            --dark-bg: black;
+            --white: #ffffff;
+            --gray-light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Lexend', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            color: #333;
+            background-color: var(--white);
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--dark-bg);
+            padding: 0.5rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Jarak antara logo dan teks */
+        }
+
+        .logo-img {
+            height: 50px; /* Ukuran tinggi logo */
+            width: auto;
+            border-radius: 5px;
+        }
+
+        .logo-text {
+            color: var(--primary-gold);
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1520529986992-d4c33a695f53?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 10%;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--secondary-red);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-gold);
+            margin: 10px auto;
+        }
+
+        h3 {
+            color: var(--secondary-red);
+            border-left: 4px solid var(--primary-gold);
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+
+        .content-box {
+            background: var(--gray-light);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* Services */
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            border-top: 5px solid var(--secondary-red);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .price-tag {
+            display: inline-block;
+            background: var(--secondary-red);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        /* Academics Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+        }
+
+        th, td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--dark-bg);
+            color: var(--primary-gold);
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Join Steps */
+        .step-list {
+            counter-reset: step-counter;
+            list-style: none;
+            padding: 0;
+        }
+
+        .step-list li {
+            counter-increment: step-counter;
+            margin-bottom: 25px;
+            padding-left: 60px;
+            position: relative;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: var(--primary-gold);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 60px 10% 20px;
+            text-align: center;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .cta-btn {
+            background: var(--primary-gold);
+            color: var(--dark-bg);
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            display: inline-block;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .cta-btn:hover {
+            background: var(--white);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            nav { flex-direction: column; padding: 1rem; }
+            nav ul { margin-top: 15px; gap: 10px; }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-container">
+            <img src="logobastian.jpeg" alt="Logo Harmony Music" class="logo-img">
+            <div class="logo-text">Harmony Music</div>
+        </div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#academics">Academics</a></li>
+            <li><a href="#join">Join Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>Harmony Music Private Lesson</h1>
+        <p style="font-size: 1.2rem; max-width: 700px;">
+            Membimbing Anda menguasai fundamental hingga teknik mahir dalam memainkan berbagai instrumen musik dengan cara yang profesional dan menyenangkan. [cite: 19]
+        </p>
+        <a href="#join" class="cta-btn">Mulai Perjalanan Musikmu</a>
+    </header>
+
+    <section id="about">
+        <h2>About Us</h2>
+        
+        <div class="content-box">
+            <h3>Sejarah</h3>
+            <p>Harmony Music Private Lesson adalah lembaga kursus musik yang didirikan pada tahun 2026 dengan guru-guru yang sangat memahami bidangnya[cite: 8]. Kami sangat dipercaya untuk menumbuhkan minat anak-anak dalam bermain musik dan membantu mengoptimalkan talenta musikal pada setiap individu[cite: 9, 21].</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="content-box">
+                <h3>Visi</h3>
+                <p>Menjadi institusi kursus musik yang membantu setiap individu mengembangkan talenta dan kecintaan pada musik melalui pendekatan yang profesional namun tetap menyenangkan[cite: 11].</p>
+            </div>
+            <div class="content-box">
+                <h3>Misi</h3>
+                <ul style="padding-left: 20px;">
+                    <li>Memberikan pengajaran musik yang berkualitas tinggi dan mudah diakses[cite: 13].</li>
+                    <li>Membantu siswa mengembangkan keterampilan piano, biola, dan gitar secara bertahap[cite: 14].</li>
+                    <li>Menciptakan lingkungan belajar yang menyenangkan dan kreatif[cite: 15].</li>
+                    <li>Membimbing siswa membangun rasa percaya diri dalam bermain musik secara pribadi maupun di depan umum[cite: 16].</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-box">
+            <h3>Tujuan Kami</h3>
+            <ul>
+                <li>Membimbing siswa menguasai fundamental hingga teknik mahir[cite: 19].</li>
+                <li>Menjadi institusi pendidikan musik inklusif bagi segala usia, mulai dari anak-anak hingga dewasa[cite: 20].</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="services" style="background: var(--gray-light);">
+        <h2>Our Service</h2>
+        <div class="services-container">
+            <div class="service-card">
+                <h3>Les Piano</h3>
+                <p>Jelajahi dunia musik mulai dari mengenal tuts, membaca not, hingga koordinasi tangan dan ekspresi yang hidup[cite: 25, 26]. Siswa akan memainkan lagu populer maupun klasik serta mengenal teori musik dasar[cite: 27].</p>
+                <div class="price-tag">Harga: Rp400.000 / 4 pertemuan [cite: 29]</div>
+            </div>
+            <div class="service-card">
+                <h3>Les Biola</h3>
+                <p>Belajar dengan cara santai namun terarah. Mulai dari cara memegang bow yang benar, menghasilkan nada jernih, hingga melatih pendengaran melalui lagu favorit Anda[cite: 32, 34].</p>
+                <div class="price-tag">Harga: Rp450.000 / 4 pertemuan [cite: 36]</div>
+            </div>
+            <div class="service-card">
+                <h3>Les Gitar</h3>
+                <p>Belajar teknik petikan, pola strumming, memahami chord, dan membaca tab dengan mudah. Materi disesuaikan agar Anda bisa langsung menikmati proses bermain gitar[cite: 39, 41].</p>
+                <div class="price-tag">Harga: Rp350.000 / 4 pertemuan [cite: 43]</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="academics">
+        <h2>Academics</h2>
+        
+        <h3>1. Konsep Video (3 Levels)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Level</th>
+                    <th>Materi Pembelajaran</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Beginner</strong></td>
+                    <td>Perkenalan bagian alat musik, tangga nada, cara memegang instrumen, dan posisi tubuh yang baik[cite: 79].</td>
+                </tr>
+                <tr>
+                    <td><strong>Primary</strong></td>
+                    <td>Harmonisasi, memainkan lagu-lagu <em>easy to play</em>, dan perkenalan dinamika dalam musik[cite: 80].</td>
+                </tr>
+                <tr>
+                    <td><strong>Hard</strong></td>
+                    <td>Memainkan lagu-lagu klasik tingkat mahir dengan notasi yang lebih kompleks[cite: 81].</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>2. Kuis Interaktif</h3>
+        <div class="content-box">
+            <ul>
+                <li><strong>Level Beginner:</strong> Kuis bagian alat musik dan tangga nada[cite: 84].</li>
+                <li><strong>Level Primary:</strong> Kuis tangga nada dan ketukan[cite: 85].</li>
+                <li><strong>Level Hard:</strong> Kuis birama dan kuis melanjutkan potongan lagu klasik[cite: 86].</li>
+            </ul>
+        </div>
+
+        <h3>3. Student Concerts</h3>
+        <p>Setiap akhir semester, kami menyelenggarakan <strong>"Music Concert"</strong> sebagai wadah bagi murid menunjukkan perkembangan akademik mereka dan tampil bersama kolaborasi Guru dan Murid[cite: 88, 89].</p>
+    </section>
+
+    <section id="join" style="background: var(--dark-bg); color: white;">
+        <h2 style="color: var(--primary-gold);">Join Us</h2>
+        <ul class="step-list">
+            <li>
+                <strong>Pilih Les:</strong> Tentukan instrumen (piano, biola, atau gitar) sesuai minat dan tujuan belajarmu[cite: 45].
+            </li>
+            <li>
+                <strong>Tentukan Paket & Jadwal:</strong> Sesuaikan dengan ketersediaan waktu Anda[cite: 47]. Kami menawarkan paket fleksibel agar tidak mengganggu rutinitas harianmu[cite: 48].
+            </li>
+            <li>
+                <strong>Klik "Daftar Sekarang":</strong> Isi formulir pendaftaran dengan data diri lengkap[cite: 49, 50].
+            </li>
+            <li>
+                <strong>Pembayaran:</strong> Lakukan pembayaran melalui metode yang paling nyaman[cite: 52].
+            </li>
+            <li>
+                <strong>Konfirmasi:</strong> Tim kami akan menghubungimu untuk memastikan persiapan kelas pertama[cite: 53].
+            </li>
+        </ul>
+        <div style="text-align: center;">
+            <a href="https://wa.me/0123456789" class="cta-btn">Daftar / Pesan Sekarang</a>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-grid">
+            <div>
+                <h3 style="color: var(--primary-gold); border: none;">Harmony Music</h3>
+                <p>Mewujudkan impian bermusik dengan bimbingan tutor berpengalaman langsung ke tempat Anda.</p>
+            </div>
+            <div>
+                <h4 style="color: var(--primary-gold);">Kontak</h4>
+                <p>📞 Telp: 0123456789 [cite: 101]</p>
+                <p>📍 Lokasi: Kapan-kapan Kita Ke Dufan, Kec. Sukasuka [cite: 74]</p>
+            </div>
+            <div>
+                <h4 style="color: var(--primary-gold);">Social Media</h4>
+                <p>📸 Instagram: @3harmonymusics [cite: 99]</p>
+                <p>🔵 Facebook: Harmony Music [cite: 100]</p>
+            </div>
+        </div>
+        
+        <div style="border-top: 1px solid #444; padding-top: 20px; font-size: 0.9rem;">
+            <p>&copy; 2026 Harmony Music Private Lesson. All Rights Reserved.</p>
+            <p style="color: #777;">Anggota Kelompok 4: Felicia Jessica Kaligis, Yehezkiel Welfried Manoppo, Adhe Mario Sabastian Simanjuntak, Angga Rafliado Situmorang [cite: 1-4]</p>
+        </div>
+    </footer>
+
+</body>
+</html>
