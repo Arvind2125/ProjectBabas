@@ -38,11 +38,11 @@
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 15px; /* Jarak antara logo dan teks */
+            gap: 15px;
         }
 
         .logo-img {
-            height: 50px; /* Ukuran tinggi logo */
+            height: 50px;
             width: auto;
             border-radius: 5px;
         }
@@ -73,12 +73,14 @@
             color: var(--primary-gold);
         }
 
-        /* Hero Section */
+        /* Hero Section dengan Background Baru */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1520529986992-d4c33a695f53?q=80&w=2070&auto=format&fit=crop');
+            /* Linear gradient memberikan transparansi hitam agar teks kontras */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('background.jpeg');
             background-size: cover;
             background-position: center;
-            height: 80vh;
+            background-attachment: fixed; /* Memberikan efek parallax saat scroll */
+            height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -92,7 +94,18 @@
             font-size: 3.5rem;
             margin-bottom: 20px;
             color: var(--primary-gold);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            max-width: 700px;
+            background: rgba(0, 0, 0, 0.4); /* Kotak transparan untuk teks */
+            padding: 15px 25px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px); /* Efek blur di belakang teks */
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            margin-bottom: 30px;
         }
 
         /* Sections */
@@ -240,7 +253,6 @@
             font-weight: bold;
             display: inline-block;
             transition: 0.3s;
-            margin-top: 20px;
         }
 
         .cta-btn:hover {
@@ -251,7 +263,7 @@
         @media (max-width: 768px) {
             nav { flex-direction: column; padding: 1rem; }
             nav ul { margin-top: 15px; gap: 10px; }
-            .hero h1 { font-size: 2rem; }
+            .hero h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -273,9 +285,9 @@
 
     <header class="hero">
         <h1>Harmony Music Private Lesson</h1>
-        <p style="font-size: 1.2rem; max-width: 700px;">
+        <div class="hero-desc">
             Membimbing Anda menguasai fundamental hingga teknik mahir dalam memainkan berbagai instrumen musik dengan cara yang profesional dan menyenangkan.
-        </p>
+        </div>
         <a href="#join" class="cta-btn">Mulai Perjalanan Musikmu</a>
     </header>
 
@@ -392,7 +404,7 @@
                 <strong>Konfirmasi:</strong> Tim kami akan menghubungimu untuk memastikan persiapan kelas pertama.
             </li>
         </ul>
-        <div style="text-align: center;">
+        <div style="text-align: center; margin-top: 30px;">
             <a href="https://wa.me/0123456789" class="cta-btn">Daftar / Pesan Sekarang</a>
         </div>
     </section>
