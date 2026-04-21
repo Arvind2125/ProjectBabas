@@ -353,12 +353,226 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- Mobile Responsive --- */
-        @media (max-width: 992px) {
-            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-            .hero h1 { font-size: 3rem; }
-            section { padding: 60px 5%; }
-        }
+/* =====================================================
+   MOBILE RESPONSIVE — semua fitur, animasi, konten tetap
+   ===================================================== */
+
+/* ---------- TABLET (≤ 992px) ---------- */
+@media (max-width: 992px) {
+    nav {
+        padding: 1rem 5%;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+    }
+    nav ul {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        height: auto;
+        min-height: 90vh;
+        padding: 100px 20px;
+        background-attachment: scroll;
+    }
+    .hero h1 { font-size: 3rem; }
+    .hero-desc {
+        font-size: 1.1rem;
+        padding: 18px 28px;
+    }
+
+    section { padding: 70px 5%; }
+    h2 { font-size: 2.4rem; margin-bottom: 45px; }
+    h2::before { font-size: 4rem; top: 50px; }
+
+    .content-box { padding: 30px; border-radius: 20px; }
+
+    .services-container { gap: 25px; }
+    .service-card { padding: 40px 30px; border-radius: 25px; }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+
+    footer { padding: 70px 5% 30px; }
+}
+
+/* ---------- MOBILE (≤ 768px) ---------- */
+@media (max-width: 768px) {
+    nav {
+        padding: 0.8rem 5%;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .logo-img { height: 45px; }
+    .logo-text { font-size: 1.3rem; letter-spacing: 1.5px; }
+
+    nav ul {
+        gap: 12px 18px;
+        padding: 5px 0;
+    }
+    nav a { font-size: 0.85rem; }
+
+    .hero {
+        min-height: 85vh;
+        padding: 80px 18px;
+    }
+    .hero h1 {
+        font-size: 2.3rem;
+        line-height: 1.1;
+        margin-bottom: 16px;
+    }
+    .hero-desc {
+        font-size: 1rem;
+        padding: 16px 22px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+        border-radius: 16px;
+    }
+
+    section { padding: 55px 5%; }
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 35px;
+    }
+    h2::before {
+        font-size: 3rem;
+        top: 40px;
+    }
+
+    h3 { font-size: 1.2rem; margin: 20px 0 12px; }
+    h3::before { width: 22px; }
+
+    .content-box {
+        padding: 25px 22px;
+        margin-bottom: 25px;
+        border-radius: 18px;
+    }
+
+    .services-container {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+    .service-card {
+        padding: 35px 25px;
+        border-radius: 22px;
+    }
+    .price-tag {
+        padding: 7px 20px;
+        font-size: 0.9rem;
+    }
+
+    .table-wrapper { -webkit-overflow-scrolling: touch; }
+    th, td { padding: 15px 14px; font-size: 0.9rem; }
+    th { font-size: 0.7rem; letter-spacing: 0.5px; }
+
+    .step-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+    .step-item {
+        padding: 22px 18px;
+        border-radius: 16px;
+    }
+    .step-num { font-size: 1.6rem; }
+
+    .cta-btn {
+        padding: 15px 32px;
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        margin-bottom: 40px;
+    }
+    footer { padding: 60px 5% 25px; }
+    .footer-logo { font-size: 1.6rem; }
+
+    .social-links a {
+        display: inline-block;
+        margin: 5px 12px 5px 0;
+        font-size: 1rem;
+    }
+}
+
+/* ---------- SMALL MOBILE (≤ 480px) ---------- */
+@media (max-width: 480px) {
+    nav { padding: 0.7rem 4%; }
+    .logo-container { gap: 10px; }
+    .logo-img { height: 40px; }
+    .logo-text { font-size: 1.15rem; letter-spacing: 1px; }
+
+    nav ul { gap: 10px 14px; }
+    nav a { font-size: 0.78rem; }
+
+    .hero { padding: 60px 14px; min-height: 80vh; }
+    .hero h1 { font-size: 1.9rem; }
+    .hero-desc {
+        font-size: 0.92rem;
+        padding: 14px 18px;
+        border-radius: 14px;
+    }
+
+    section { padding: 45px 4%; }
+    h2 { font-size: 1.7rem; margin-bottom: 28px; }
+    h2::before { font-size: 2.4rem; top: 32px; }
+
+    h3 { font-size: 1.1rem; flex-wrap: wrap; }
+
+    .content-box {
+        padding: 22px 18px;
+        border-radius: 16px;
+        margin-bottom: 20px;
+    }
+
+    .service-card {
+        padding: 30px 22px;
+        border-radius: 20px;
+    }
+    .service-card p { font-size: 0.95rem; }
+
+    th, td { padding: 12px 10px; font-size: 0.82rem; }
+
+    .step-list {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    .step-item { padding: 20px 16px; }
+    .step-num { font-size: 1.5rem; }
+
+    .cta-btn {
+        padding: 14px 26px;
+        font-size: 0.78rem;
+        width: 100%;
+        max-width: 320px;
+        text-align: center;
+    }
+
+    footer { padding: 50px 4% 20px; }
+    .footer-logo { font-size: 1.4rem; }
+    .footer-grid p,
+    .footer-grid h4 { font-size: 0.92rem; }
+}
+
+/* ---------- EXTRA SMALL (≤ 360px) ---------- */
+@media (max-width: 360px) {
+    .hero h1 { font-size: 1.65rem; }
+    .hero-desc { font-size: 0.86rem; }
+    h2 { font-size: 1.5rem; }
+    nav a { font-size: 0.72rem; }
+    .logo-text { font-size: 1rem; }
+}
+
+/* ---------- LANDSCAPE MOBILE ---------- */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero { min-height: 110vh; padding: 80px 20px; }
+}
+
     </style>
 </head>
 <body>
