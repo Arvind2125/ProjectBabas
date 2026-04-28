@@ -163,78 +163,40 @@
         .btn-main { padding: 18px 45px; background: var(--gold); color: black; text-decoration: none; border-radius: 100px; font-weight: 800; display: inline-block; transition: var(--transition); box-shadow: 0 10px 30px rgba(212,175,55,0.3); border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
         .btn-main:hover { transform: scale(1.05); filter: brightness(1.1); }
 
-        /* --- List Style --- */
         .info-list { list-style: none; text-align: left; }
         .info-list li { margin-bottom: 12px; padding-left: 25px; position: relative; color: #aaa; font-size: 0.9rem; line-height: 1.5; }
         .info-list li::before { content: "•"; color: var(--gold); position: absolute; left: 0; font-weight: bold; }
+
+        /* --- Help Center Specific --- */
+        .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; width: 100%; margin-top: 30px; }
+        .review-card { background: var(--glass); padding: 25px; border-radius: 20px; border: 1px solid var(--border); }
+        .stars { color: var(--gold); margin-bottom: 10px; }
 
         footer { padding: 60px 10% 30px; background: #000; border-top: 1px solid var(--border); width: 100%; }
 
         .floating-note { position: absolute; color: var(--gold); opacity: 0.1; font-size: 5rem; animation: float 8s infinite ease-in-out; z-index: -1; }
         @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-50px) rotate(20deg); } }
 
-        /* --- TAMBAHAN UNTUK MOBILE HAMBURGER --- */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 6px;
-            z-index: 1100;
-        }
-
-        .hamburger span {
-            display: block;
-            width: 28px;
-            height: 3px;
-            background: white;
-            border-radius: 10px;
-            transition: var(--transition);
-        }
+        .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 6px; z-index: 1100; }
+        .hamburger span { display: block; width: 28px; height: 3px; background: white; border-radius: 10px; transition: var(--transition); }
 
         @media (max-width: 992px) {
             .about-container { grid-template-columns: 1fr; }
             .hero h1 { font-size: 3rem; }
             nav { padding: 15px 25px; border-radius: 40px; }
-            
             .hamburger { display: flex; }
-
-            /* Perubahan Nav Links di Mobile */
             .nav-links {
-                position: absolute;
-                top: 0;
-                right: 0;
-                height: 100vh;
-                width: 70%;
-                background: rgba(10, 10, 10, 0.98);
-                backdrop-filter: blur(25px);
-                flex-direction: column;
-                justify-content: center;
-                gap: 20px;
-                transform: translateX(100%);
-                transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+                position: absolute; top: 0; right: 0; height: 100vh; width: 70%;
+                background: rgba(10, 10, 10, 0.98); backdrop-filter: blur(25px);
+                flex-direction: column; justify-content: center; gap: 20px;
+                transform: translateX(100%); transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
                 border-left: 1px solid var(--border);
-                border-radius: 0; /* Menghilangkan radius di sisi kanan */
             }
-
-            .nav-links.active {
-                transform: translateX(0);
-            }
-
-            /* Animasi Hamburger ke X */
+            .nav-links.active { transform: translateX(0); }
             .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
             .hamburger.active span:nth-child(2) { opacity: 0; }
             .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
-
-            /* Dropdown Mobile Fix */
-            .dropdown-content {
-                position: static;
-                transform: none;
-                width: 100%;
-                background: transparent;
-                box-shadow: none;
-                border: none;
-            }
-            nav li:hover .dropdown-content { display: block; }
+            .dropdown-content { position: static; transform: none; width: 100%; background: transparent; box-shadow: none; border: none; }
         }
     </style>
 </head>
@@ -258,13 +220,17 @@
                 <a id="link-about">About Us <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
                 <div class="dropdown-content">
                     <a onclick="showSection('about')">Sejarah & Visi Misi</a>
-                    <a onclick="showSection('founders')">Our Founders</a>
-                    <a onclick="showSection('concert')">Annual Concert</a>
+                    <a onclick="showSection('founders')">STAFF</a>
                 </div>
             </li>
             <li><a onclick="showSection('services')" id="link-services">Courses</a></li>
-            <li><a onclick="showSection('academics')" id="link-academics">Levels</a></li>
-            <li><a onclick="showSection('join')" id="link-join">Join Us</a></li>
+            <li>
+                <a id="link-academics">Academics <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                <div class="dropdown-content">
+                    <a onclick="showSection('academics')">Kurikulum & Jenjang</a>
+                </div>
+            </li>
+            <li><a onclick="showSection('help')" id="link-help">Help Center</a></li>
         </ul>
     </nav>
 
@@ -303,27 +269,27 @@
     </section>
 
     <section id="founders" class="content-section">
-        <h2 class="section-title" data-aos="fade-up">Our Founders</h2>
+        <h2 class="section-title" data-aos="fade-up">Staff</h2>
         <div class="card-wrapper">
             <div class="course-card" data-aos="fade-up" data-aos-delay="100">
-                <img src="felicia.jpeg" style="width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--gold); margin-bottom: 15px; object-fit: cover;">
+                <img src="felicia.png" style="width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--gold); margin-bottom: 15px; object-fit: cover;">
                 <h4>Felicia Jessica Kaligis</h4>
-                <p style="color: var(--gold); font-size: 0.8rem;">Co-Founder</p>
+                <p style="color: var(--gold); font-size: 0.8rem;">Piano Teacher</p>
             </div>
             <div class="course-card" data-aos="fade-up" data-aos-delay="200">
-                <img src="yehezkiel.jpeg" style="width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--gold); margin-bottom: 15px; object-fit: cover;">
+                <img src="yehezkiel.png" style="width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--gold); margin-bottom: 15px; object-fit: cover;">
                 <h4>Yehezkiel W. Manoppo</h4>
-                <p style="color: var(--gold); font-size: 0.8rem;">Co-Founder</p>
+                <p style="color: var(--gold); font-size: 0.8rem;">Violin Teacher</p>
             </div>
             <div class="course-card" data-aos="fade-up" data-aos-delay="300">
-                <img src="mario.jpeg" style="width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--gold); margin-bottom: 15px; object-fit: cover;">
-                <h4>Adhe Mario Sabastian</h4>
-                <p style="color: var(--gold); font-size: 0.8rem;">Co-Founder</p>
+                <img src="adhe.png" style="width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--gold); margin-bottom: 15px; object-fit: cover;">
+                <h4>Adhe Mario Sabastian Simanjuntak</h4>
+                <p style="color: var(--gold); font-size: 0.8rem;">Guitar Teacher</p>
             </div>
             <div class="course-card" data-aos="fade-up" data-aos-delay="400">
-                <img src="angga.jpeg" style="width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--gold); margin-bottom: 15px; object-fit: cover;">
+                <img src="angga.png" style="width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--gold); margin-bottom: 15px; object-fit: cover;">
                 <h4>Angga Rafliado S.</h4>
-                <p style="color: var(--gold); font-size: 0.8rem;">Co-Founder</p>
+                <p style="color: var(--gold); font-size: 0.8rem;">Customer Service Representative</p>
             </div>
         </div>
     </section>
@@ -350,11 +316,52 @@
                 <div style="color: var(--gold); font-weight: 800;">IDR 350K / 4 Sesi</div>
             </div>
         </div>
+
+        <div style="margin-top: 80px; width: 100%; max-width: 900px;">
+            <h2 class="section-title" style="font-size: 2.5rem;" data-aos="fade-up">Langkah Pendaftaran</h2>
+            <ul class="info-list" style="font-size: 1rem; margin-bottom: 40px;">
+                <li data-aos="fade-left" data-aos-delay="100"><strong>Pilih Les:</strong> Tentukan instrumen (piano, biola, atau gitar).</li>
+                <li data-aos="fade-left" data-aos-delay="200"><strong>Tentukan Paket:</strong> Sesuaikan jadwal dengan ketersediaan waktu Anda.</li>
+                <li data-aos="fade-left" data-aos-delay="300"><strong>Isi Formulir:</strong> Masukkan data diri melalui tombol daftar di bawah.</li>
+                <li data-aos="fade-left" data-aos-delay="400"><strong>Pembayaran:</strong> Konfirmasi tempat Anda setelah pembayaran selesai.</li>
+            </ul>
+            <div class="join-box" data-aos="flip-up">
+                <h3 style="margin-bottom: 20px;">Siap Memulai Perjalanan Musikmu?</h3>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSc1yj9xfp9jY1FHjgk7uBWitKN-HKM_UMJbXfI2JFyJDxbrMg/viewform" class="btn-main" target="_blank">Daftar Sekarang</a>
+            </div>
+        </div>
     </section>
 
     <section id="academics" class="content-section">
-        <h2 class="section-title" data-aos="fade-down">Kurikulum & Jenjang</h2>
+        <h2 class="section-title" data-aos="fade-down">ACADEMICS</h2>
+        
+        <div class="glass-box" style="width: 100%; max-width: 900px; margin-bottom: 40px;" data-aos="fade-up">
+            <h3 style="color: var(--gold); margin-bottom: 20px; font-style: italic;">1. Konsep Video</h3>
+            <ul class="info-list">
+                <li><strong>Beginner:</strong> Perkenalan bagian piano/biola/gitar, perkenalan tangga nada, cara memainkan piano dengan 1 tangan dahulu, cara memegang biola dengan benar dan cara memposisikan gitar yang baik.</li>
+                <li><strong>Primary:</strong> Perkenalan tangga nada, memainkan harmonisasi dan mulai memainkan lagu-lagu yang easy to play, mulai memainkan harmonisasi dan memperkenalkan dinamika dalam musik.</li>
+                <li><strong>Hard:</strong> Mulai memainkan lagu-lagu klasik dengan level Hard, di mana not-not yang ada lebih bertingkat.</li>
+            </ul>
+        </div>
+
+        <div class="glass-box" style="width: 100%; max-width: 900px; margin-bottom: 40px;" data-aos="fade-up">
+            <h3 style="color: var(--gold); margin-bottom: 20px; font-style: italic;">2. Kuis Interaktif</h3>
+            <ul class="info-list">
+                <li><strong>Level Beginner:</strong> Kuis bagian alat musik dan tangga nada.</li>
+                <li><strong>Level Primary:</strong> Kuis bagian tangga nada, ketukkan.</li>
+                <li><strong>Level Hard:</strong> Kuis birama, kuis memainkan lanjutan lagu klasik yang sedang dimainkan.</li>
+            </ul>
+        </div>
+
+        <div class="glass-box" style="width: 100%; max-width: 900px; margin-bottom: 40px;" data-aos="fade-up">
+            <h3 style="color: var(--gold); margin-bottom: 20px; font-style: italic;">3. Student Concerts</h3>
+            <p style="line-height: 1.8; color: #aaa;">
+                Setiap akhir semester akan berlangsung <strong>“Music Concert”</strong>, di mana di sinilah semua murid menunjukkan semua perkembangan setiap tahun akademik mereka di Harmony Music Lesson. Di Music Concert ini juga akan diperlihatkan gabungan dari Guru dan Murid untuk memainkan musik bersama.
+            </p>
+        </div>
+
         <div style="width: 100%; max-width: 900px;" data-aos="zoom-in">
+            <h3 style="color: var(--gold); margin-bottom: 20px; text-align: center;">Tabel Jenjang</h3>
             <table>
                 <thead>
                     <tr>
@@ -381,62 +388,58 @@
         </div>
     </section>
 
-    <section id="join" class="content-section">
-        <h2 class="section-title" data-aos="fade-up">Langkah Pendaftaran</h2>
-        <div style="width: 100%; max-width: 800px; margin-bottom: 40px;">
-            <ul class="info-list" style="font-size: 1rem;">
-                <li data-aos="fade-left" data-aos-delay="100"><strong>Pilih Les:</strong> Tentukan instrumen (piano, biola, atau gitar).</li>
-                <li data-aos="fade-left" data-aos-delay="200"><strong>Tentukan Paket:</strong> Sesuaikan jadwal dengan ketersediaan waktu Anda.</li>
-                <li data-aos="fade-left" data-aos-delay="300"><strong>Isi Formulir:</strong> Masukkan data diri melalui tombol daftar di bawah.</li>
-                <li data-aos="fade-left" data-aos-delay="400"><strong>Pembayaran:</strong> Konfirmasi tempat Anda setelah pembayaran selesai.</li>
-            </ul>
+    <section id="help" class="content-section">
+        <h2 class="section-title" data-aos="fade-up">Help Center</h2>
+        
+        <div class="about-container">
+            <div class="glass-box" data-aos="fade-right">
+                <h3 style="color: var(--gold); margin-bottom: 15px;"><i class="fas fa-phone"></i> Contact Us</h3>
+                <p style="color: #aaa;">📍 Sukasuka, Indonesia</p>
+                <p style="color: #aaa;">📞 0812-8178-4958</p>
+                <p style="color: #aaa;">📸 @3harmonymusics</p>
+            </div>
+            <div class="glass-box" data-aos="fade-left">
+                <h3 style="color: var(--gold); margin-bottom: 15px;"><i class="fas fa-map-marker-alt"></i> Lokasi</h3>
+                <p style="color: #aaa;">Jl. Kolonel Masturi No.288, Cihanjuang Rahayu, Kec. Parongpong, Kabupaten Bandung Barat, Jawa Barat 40559</p>
+                <p style="color: #888; font-size: 0.8rem; margin-top: 10px;">Buka: Senin - Jumat (09.00 - 18.00)</p>
+                <a href="https://maps.app.goo.gl/vni7hv4vf5aC2YLh6" target="_blank" class="btn-maps">
+                    <i class="fas fa-directions"></i> Buka di Google Maps
+                </a>
+            </div>
         </div>
-        <div class="join-box" data-aos="flip-up">
-            <h3 style="margin-bottom: 20px;">Siap Memulai Perjalanan Musikmu?</h3>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSc1yj9xfp9jY1FHjgk7uBWitKN-HKM_UMJbXfI2JFyJDxbrMg/viewform" class="btn-main" target="_blank">Daftar Sekarang</a>
-        </div>
-    </section>
 
-    <section id="concert" class="content-section">
-        <h2 class="section-title">Music Concert</h2>
-        <div class="glass-box" style="max-width: 800px; text-align: center;" data-aos="zoom-in">
-            <p style="line-height: 1.8; color: #aaa;">
-                Setiap tahun akademik, Harmony Music menyelenggarakan <strong>“Music Concert”</strong>. Di sinilah seluruh murid menunjukkan perkembangan mereka. Konser ini juga menampilkan kolaborasi istimewa antara Guru dan Murid untuk memainkan musik bersama di atas panggung.
-            </p>
+        <div style="margin-top: 60px; width: 100%;">
+            <h2 class="section-title" style="font-size: 2rem;">Customer Review</h2>
+            <div class="review-grid">
+                <div class="review-card" data-aos="fade-up">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p style="font-style: italic;">"Anak saya lulusan dari les ini sekarang udah go internasional!"</p>
+                    <small style="color: var(--gold);">- Amanda Manoppo</small>
+                </div>
+                <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p style="font-style: italic;">"Les privat ini keren banget! Anak saya belajar disini jadi lebih fokus, guru bisa atur materi sesuai kebutuhan, dan waktunya fleksibel."</p>
+                    <small style="color: var(--gold);">- Raffi Ahmad</small>
+                </div>
+                <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p style="font-style: italic;">"Jack studied here and he was very happy with the teacher and service from this course, now he has done 2 world tours!"</p>
+                    <small style="color: var(--gold);">- Justin Bieber</small>
+                </div>
+            </div>
         </div>
     </section>
 
     <footer id="contact">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
-            <div>
-                <h3 style="color: var(--gold); margin-bottom: 20px;">Harmony Music</h3>
-                <p style="opacity: 0.6; font-size: 0.9rem;">Membimbing setiap individu menemukan melodi terbaik dalam hidup mereka.</p>
-            </div>
-            <div>
-                <h4 style="margin-bottom: 20px;">Contact Us</h4>
-                <p style="opacity: 0.6; font-size: 0.9rem;">📍 Sukasuka, Indonesia</p>
-                <p style="opacity: 0.6; font-size: 0.9rem;">📞 0812-8178-4958</p>
-                <p style="opacity: 0.6; font-size: 0.9rem;">📸 @3harmonymusics</p>
-            </div>
-            <div>
-                <h4 style="margin-bottom: 20px;">Socials</h4>
-                <div style="display: flex; gap: 15px;">
-                    <a href="#" style="color: white; font-size: 1.5rem;"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" style="color: white; font-size: 1.5rem;"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#" style="color: white; font-size: 1.5rem;"><i class="fa-brands fa-youtube"></i></a>
-                </div>
-            </div>
-        </div>
-        <div style="text-align: center; margin-top: 50px; opacity: 0.3; font-size: 0.7rem;">
+        <div style="text-align: center; opacity: 0.3; font-size: 0.7rem;">
             &copy; 2026 Harmony Music Private Lesson. Created by Kelompok 4 (Felicia, Yehezkiel, Mario, Angga).
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: false, mirror: true });
+        AOS.init({ duration: 1000, once: false });
 
-        // FUNGSI UNTUK TOGGLE MENU MOBILE
         function toggleMobileMenu() {
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('nav-menu');
@@ -445,15 +448,13 @@
         }
 
         function showSection(sectionId) {
-            // Tutup menu mobile jika sedang terbuka saat klik menu
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('nav-menu');
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
 
             document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
-            const targetSection = document.getElementById(sectionId);
-            targetSection.classList.add('active');
+            document.getElementById(sectionId).classList.add('active');
 
             document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
             const targetLink = document.getElementById('link-' + sectionId);
